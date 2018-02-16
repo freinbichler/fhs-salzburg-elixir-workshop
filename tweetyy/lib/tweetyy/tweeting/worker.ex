@@ -25,6 +25,6 @@ defmodule Tweetyy.Tweeting.Worker do
   end
 
   def broadcast_tweet(tweet) do
-    TweetyyWeb.Endpoint.broadcast("tweet_stream:trump", "tweet:new", %{body: tweet})
+    TweetyyWeb.Endpoint.broadcast("tweet_stream:$BTC", "tweet:new", %{body: tweet, score: Sentient.analyze(tweet)})
   end
 end

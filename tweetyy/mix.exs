@@ -43,6 +43,8 @@ defmodule Tweetyy.Mixfile do
       {:cowboy, "~> 1.0"},
       {:oauther, "~> 1.1"},
       {:extwitter, "~> 0.8"},
+      {:sentient, git: "https://github.com/dantame/sentient.git"},
+      {:poison, "~> 3.0", override: true}
     ]
   end
 

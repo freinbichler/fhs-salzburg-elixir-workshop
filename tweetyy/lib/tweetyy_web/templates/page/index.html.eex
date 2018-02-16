@@ -1,11 +1,10 @@
-<h2> HEloo tweetz</h2>
+<h2>$BTC Sentiment Analysis</h2>
+<p>Average Score: <span class="js-average-score">waiting...</span></p>
 
-<ul class="tweet-list">
-</ul>
+<ul class="tweet-list js-tweet-list"></ul>
 
 <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
-    var el = document.querySelector(".tweet-list")
-    window.startTermStream("trump", el)
+    window.startTermStream("$BTC");
   })
 </script>

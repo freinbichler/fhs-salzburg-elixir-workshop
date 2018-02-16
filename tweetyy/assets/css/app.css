@@ -1,1 +1,17 @@
 /* This file is for your main application css. */
+.score {
+  color: tomato;
+  font-weight: bold;
+  font-size: 1.4rem;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background: #EEE;
+  text-align: center;
+  border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}

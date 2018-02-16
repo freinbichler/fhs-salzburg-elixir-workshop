@@ -23,18 +23,30 @@ import socket from "./socket"
 const template = (tweet) => {
   return `
     <li>
-      <p>${tweet.body}</p>
+      <p><span class="score">${tweet.score}</span> ${tweet.body}</p>
     </li>
   `
 }
 
-window.startTermStream = (term, el) => {
+const listElement = document.querySelector(".js-tweet-list");
+const averageElement = document.querySelector(".js-average-score");
+
+let scores = [];
+
+window.startTermStream = (term) => {
   let channel = socket.channel(`tweet_stream:${term}`, {})
   channel.join()
     .receive("ok", resp => { console.log("Joined successfully", resp) })
     .receive("error", resp => { console.log("Unable to join", resp) })
 
   channel.on("tweet:new", (tweet) => {
-    el.innerHTML = template(tweet) + el.innerHTML
+    listElement.innerHTML = template(tweet) + listElement.innerHTML;
+    window.calculateAverageScore(tweet.score);
   })
+}
+
+window.calculateAverageScore = (score) => {
+  scores.push(score);
+  const averageScore = scores.reduce((p, c) => p + c, 0 ) / scores.length;
+  averageElement.innerHTML = Math.round(averageScore * 10) / 10;
 }

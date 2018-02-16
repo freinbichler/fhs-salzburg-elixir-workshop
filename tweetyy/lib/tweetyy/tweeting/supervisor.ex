@@ -7,7 +7,7 @@ defmodule Tweetyy.Tweeting.Supervisor do
 
   def init(_arg) do
     children = [
-      worker(Tweetyy.Tweeting.Worker, ["trump"], restart: :permanent)
+      worker(Tweetyy.Tweeting.Worker, ["$BTC"], restart: :permanent)
     ]
 
     supervise(children, strategy: :one_for_one)
